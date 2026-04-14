@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: rent_mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: rent-management
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - '27017:27017'
+    networks:
+      - rent_net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: rent_backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      MONGO_URI: mongodb://mongo:27017/rent-management
+      NODE_ENV: production
+    ports:
+      - '5000:5000'
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      - mongo
+    networks:
+      - rent_net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    container_name: rent_frontend
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
+    networks:
+      - rent_net
+
+volumes:
+  mongo_data:
+  uploads_data:
+
+networks:
+  rent_net:
+    driver: bridge
