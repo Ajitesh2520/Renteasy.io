@@ -1,21 +1,20 @@
-const Tenant = require('../models/Tenant');
+const { tenants } = require('../models/localDb');
+const { v4: uuidv4 } = require('uuid');
 
-const getAllTenants = async (req, res, next) => {
+const getAllTenants = (req, res, next) => {
   try {
     const { active } = req.query;
-    const filter = { owner: req.user._id };
-    if (active !== undefined) filter.isActive = active === 'true';
-
-    const tenants = await Tenant.find(filter).sort({ createdAt: -1 });
-    res.json({ success: true, count: tenants.length, data: tenants });
+    let filtered = tenants.filter(t => t.owner === req.user._id);
+    if (active !== undefined) filtered = filtered.filter(t => t.isActive === (active === 'true'));
+    res.json({ success: true, count: filtered.length, data: filtered });
   } catch (err) {
     next(err);
   }
 };
 
-const getTenant = async (req, res, next) => {
+const getTenant = (req, res, next) => {
   try {
-    const tenant = await Tenant.findOne({ _id: req.params.id, owner: req.user._id });
+    const tenant = tenants.find(t => t._id === req.params.id && t.owner === req.user._id);
     if (!tenant) return res.status(404).json({ success: false, message: 'Tenant not found' });
     res.json({ success: true, data: tenant });
   } catch (err) {
@@ -23,37 +22,32 @@ const getTenant = async (req, res, next) => {
   }
 };
 
-const createTenant = async (req, res, next) => {
+const createTenant = (req, res, next) => {
   try {
-    const tenant = await Tenant.create({ ...req.body, owner: req.user._id });
+    const tenant = { ...req.body, _id: uuidv4(), owner: req.user._id, createdAt: new Date(), isActive: true };
+    tenants.push(tenant);
     res.status(201).json({ success: true, data: tenant });
   } catch (err) {
     next(err);
   }
 };
 
-const updateTenant = async (req, res, next) => {
+const updateTenant = (req, res, next) => {
   try {
-    const tenant = await Tenant.findOneAndUpdate(
-      { _id: req.params.id, owner: req.user._id },
-      req.body,
-      { new: true, runValidators: true }
-    );
-    if (!tenant) return res.status(404).json({ success: false, message: 'Tenant not found' });
-    res.json({ success: true, data: tenant });
+    const idx = tenants.findIndex(t => t._id === req.params.id && t.owner === req.user._id);
+    if (idx === -1) return res.status(404).json({ success: false, message: 'Tenant not found' });
+    tenants[idx] = { ...tenants[idx], ...req.body };
+    res.json({ success: true, data: tenants[idx] });
   } catch (err) {
     next(err);
   }
 };
 
-const deleteTenant = async (req, res, next) => {
+const deleteTenant = (req, res, next) => {
   try {
-    const tenant = await Tenant.findOneAndUpdate(
-      { _id: req.params.id, owner: req.user._id },
-      { isActive: false },
-      { new: true }
-    );
-    if (!tenant) return res.status(404).json({ success: false, message: 'Tenant not found' });
+    const idx = tenants.findIndex(t => t._id === req.params.id && t.owner === req.user._id);
+    if (idx === -1) return res.status(404).json({ success: false, message: 'Tenant not found' });
+    tenants[idx].isActive = false;
     res.json({ success: true, message: 'Tenant deactivated successfully' });
   } catch (err) {
     next(err);

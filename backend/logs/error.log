@@ -1,2 +1,23 @@
 {"level":"error","message":"MongoDB Connection Error: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2026-03-30 20:20:01"}
 {"level":"error","message":"MongoDB Connection Error: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2026-04-13 02:46:25"}
+{"level":"error","message":"MongoDB Connection Error: querySrv ENOTFOUND _mongodb._tcp.201225","timestamp":"2026-05-03 02:43:46"}
+{"level":"error","message":"MongoDB Connection Error: querySrv ENOTFOUND _mongodb._tcp.201225","timestamp":"2026-05-03 02:48:38"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 02:54:10"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 02:54:46"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 02:59:20"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:04:05"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:05:03"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:09:50"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:11:00"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:14:35"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:14:54"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:16:40"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:16:56"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:17:29"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:17:44"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:17:48"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:18:13"}
+{"level":"error","message":"MongoDB Connection Error: Cannot read properties of undefined (reading 'connection')","timestamp":"2026-05-03 03:18:26"}
+{"level":"error","message":"Not Found - /api/auth/login - GET /api/auth/login","timestamp":"2026-05-03 03:44:49"}
+{"level":"error","message":"Cron job error: RentCycle.updateMany is not a function","timestamp":"2026-05-03 09:00:00"}
+{"level":"error","message":"Illegal arguments: undefined, number - POST /api/auth/register","timestamp":"2026-05-03 13:31:06"}

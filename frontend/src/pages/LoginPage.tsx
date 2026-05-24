@@ -47,11 +47,11 @@ const StatCard = ({
   >
     <span
       className="text-3xl font-light text-white"
-      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+      style={{ fontFamily: "'Playfair Display', Georgia, serif", display: 'inline-block', marginBottom: 6 }}
     >
       {value}
     </span>
-    <span className="text-xs text-white/40 tracking-wide">{label}</span>
+    <span className="text-xs text-white/40 tracking-wide" style={{marginTop: 6}}>{label}</span>
   </div>
 );
 
@@ -328,7 +328,7 @@ export default function LoginPage() {
                 </svg>
               </div>
               <div>
-                <div style={{ fontSize: 18, fontWeight: 500, color: "rgba(255,255,255,0.95)", letterSpacing: "-0.2px" }}>
+                <div style={{ fontSize: 80, fontWeight: 500, color: "rgba(255,255,255,0.95)", letterSpacing: "-0.2px" }}>
                   RentManager
                 </div>
                 <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -338,7 +338,7 @@ export default function LoginPage() {
             </div>
 
             {/* Headline with typewriter */}
-            <div style={{ marginBottom: 32, animation: "fadeUp 0.7s ease 0.2s both" }}>
+            <div style={{ marginBottom: 32, animation: "fadeUp 1s ease 1s both" }}>
               <h1 style={{
                 fontSize: 46, fontWeight: 300, lineHeight: 1.1, margin: "0 0 16px",
                 fontFamily: "'Playfair Display', Georgia, serif",
@@ -359,7 +359,7 @@ export default function LoginPage() {
             </div>
 
             {/* Feature chips */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 44 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 44 ,color:"#fff"}}>
               {[
                 { icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>, label: "Auto rent cycles", delay: "0.35s" },
                 { icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>, label: "SMS reminders", delay: "0.45s" },
@@ -373,12 +373,12 @@ export default function LoginPage() {
             {/* Stats */}
             <div style={{
               display: "flex", gap: 36,
-              paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.08)",
-              animation: "fadeUp 0.7s ease 0.5s both",
+              paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.08)",
+              animation: "fadeUp 0.7s ease 0.5s both",color:"#fff"
             }}>
-              <StatCard value="∞" label="Properties" delay="0.6s" />
-              <StatCard value="0" label="Missed alerts" delay="0.7s" />
-              <StatCard value="24/7" label="Automation" delay="0.8s" />
+              <StatCard value="∞" label="Properties" delay="0.6s"  />
+              <StatCard value="0" label="Missed alerts" delay="0.7s"  />
+              <StatCard value="24/7" label="Automation" delay="0.8s"  />
             </div>
 
           </div>
@@ -456,7 +456,7 @@ export default function LoginPage() {
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16, color: "#fff" }}>
 
                   <FloatingInput
                     id="email"
